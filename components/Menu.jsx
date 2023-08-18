@@ -50,7 +50,7 @@ const Menu = ({ showCatMenu, setShowCatMenu }) => {
                 )}
               </li>
             ) : (
-              <li>
+              <li className="cursor-pointer">
                 <Link href={item?.url}>{item.name}</Link>
               </li>
             )}
