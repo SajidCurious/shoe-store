@@ -4,7 +4,7 @@ import Link from "next/link";
 import Menu from "./Menu";
 import { IoMdHeartEmpty } from "react-icons/io";
 import { BsCart } from "react-icons/bs";
-import { BiMenuAltRight } from "react-icons/bi";
+import { GiHamburgerMenu } from "react-icons/gi";
 import { VscChromeClose } from "react-icons/vsc";
 
 const Header = () => {
@@ -40,6 +40,22 @@ const Header = () => {
             </div>
           </div>
           {/* icon end */}
+
+          {/* mobile menu start */}
+          <div className="w-8 md:w-12 h-8 md:h-12 rounded-full flex justify-center items-center hover:bg-black/[0.06] cursor-pointer relative -mr-2">
+            {mobileMenu ? (
+              <VscChromeClose
+                className="text-[16px]"
+                onClick={() => setMobileMenu(false)}
+              />
+            ) : (
+              <GiHamburgerMenu
+                className="text-[20px]"
+                onClick={() => setMobileMenu(true)}
+              />
+            )}
+          </div>
+          {/* mobile menu ends */}
         </div>
       </Wrapper>
     </header>
