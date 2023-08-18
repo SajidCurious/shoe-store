@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Wrapper from "./Wrapper";
 import Link from "next/link";
 import Menu from "./Menu";
+import Mobilemenu from "./Mobilemenu";
 import { IoMdHeartEmpty } from "react-icons/io";
 import { BsCart } from "react-icons/bs";
 import { GiHamburgerMenu } from "react-icons/gi";
@@ -22,6 +23,11 @@ const Header = () => {
           <img src="/logo.svg" className="w-[40px] md:w-[60px]" alt="" />
         </Link>
         <Menu showCatMenu={showCatMenu} setShowCatMenu={setShowCatMenu} />
+        <Mobilemenu
+          showCatMenu={showCatMenu}
+          setShowCatMenu={setShowCatMenu}
+          setMobileMenu={setMobileMenu}
+        />
 
         <div className="flex items-center gap-2 text-black">
           {/* icon start */}
