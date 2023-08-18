@@ -23,11 +23,13 @@ const Header = () => {
           <img src="/logo.svg" className="w-[40px] md:w-[60px]" alt="" />
         </Link>
         <Menu showCatMenu={showCatMenu} setShowCatMenu={setShowCatMenu} />
-        <Mobilemenu
-          showCatMenu={showCatMenu}
-          setShowCatMenu={setShowCatMenu}
-          setMobileMenu={setMobileMenu}
-        />
+        {mobileMenu && (
+          <Mobilemenu
+            showCatMenu={showCatMenu}
+            setShowCatMenu={setShowCatMenu}
+            setMobileMenu={setMobileMenu}
+          />
+        )}
 
         <div className="flex items-center gap-2 text-black">
           {/* icon start */}
