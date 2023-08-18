@@ -1,7 +1,7 @@
 export default function Home() {
   return (
     <>
-      <main>ksfkfak</main>
+      <main className="h-[5000px]">ksfkfak</main>
     </>
   );
 }
