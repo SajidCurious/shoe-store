@@ -3,8 +3,8 @@ import React from "react";
 
 const ProductCard = () => {
   return (
-    <div className="transform overflow-hidden bg-white duration-200 hover:scale-105 cursor-pointer">
-      <Link href={/product/}>
+    <Link href={"/product/1"}>
+      <div className="transform overflow-hidden bg-white duration-200 hover:scale-105 cursor-pointer">
         <img src="/product-1.webp" alt="Product Image" className="w-full" />
         <div className="p-4 text-black/[0.9]">
           <h2 className="text-lg font-medium">Product Name</h2>
@@ -16,8 +16,8 @@ const ProductCard = () => {
             </p>
           </div>
         </div>
-      </Link>
-    </div>
+      </div>
+    </Link>
   );
 };
 
