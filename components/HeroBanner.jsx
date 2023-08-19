@@ -6,7 +6,7 @@ import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi";
 
 const HeroBanner = () => {
   return (
-    <div>
+    <div className="relative text-white text-[20px] w-full max-w-[1360px] mx-auto">
       <Carousel
         autoPlay={true}
         infiniteLoop={true}
