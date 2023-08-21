@@ -111,6 +111,28 @@ const productDetails = () => {
             </button>
 
             {/* wishlist button end */}
+
+            <div>
+              <div className="text-lg font-bold mb-5">Product Details</div>
+              <div className="text-md mb-5">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut
+                laboriosam quas commodi consectetur tempore quam, sequi, id
+                provident ipsa asperiores mollitia! Vel quod architecto sapiente
+                laborum veniam voluptas quibusdam culpa necessitatibus sunt
+                laudantium exercitationem, unde porro a! Sint nulla temporibus
+                odit cum magnam nisi delectus, praesentium, eum deserunt nemo
+                reiciendis?
+              </div>
+              <div className="text-md mb-5">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut
+                laboriosam quas commodi consectetur tempore quam, sequi, id
+                provident ipsa asperiores mollitia! Vel quod architecto sapiente
+                laborum veniam voluptas quibusdam culpa necessitatibus sunt
+                laudantium exercitationem, unde porro a! Sint nulla temporibus
+                odit cum magnam nisi delectus, praesentium, eum deserunt nemo
+                reiciendis?
+              </div>
+            </div>
           </div>
           {/* right column end */}
         </div>
