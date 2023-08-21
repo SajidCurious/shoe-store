@@ -31,6 +31,52 @@ const productDetails = () => {
               incl. of taxes
             </div>
             <div className="text-md font-medium text-black/[0.5] mb-20">{`(Also include all applicable duties)`}</div>
+
+            {/* product price range start */}
+            <div className="mb-10">
+              {/* heding start */}
+              <div className="flex justify-between mb-2">
+                <div className="text-md font-semibold">Select Size</div>
+                <div className="text-md font-medium text-black/[0.5] cursor-pointer">
+                  Select Guide
+                </div>
+              </div>
+              {/* heding end */}
+
+              {/* size start */}
+
+              <div className="grid grid-cols-3 gap-2">
+                <div className="border rounded-md text-center py-3 font-medium hover:border-black cursor-pointer">
+                  UK 6
+                </div>
+                <div className="border rounded-md text-center py-3 font-medium hover:border-black cursor-pointer">
+                  UK 7
+                </div>
+                <div className="border rounded-md text-center py-3 font-medium hover:border-black cursor-pointer">
+                  UK 8
+                </div>
+                <div className="border rounded-md text-center py-3 font-medium hover:border-black cursor-pointer">
+                  UK 9
+                </div>
+                <div className="border rounded-md text-center py-3 font-medium hover:border-black cursor-pointer">
+                  UK 10
+                </div>
+                <div className="border rounded-md text-center py-3 font-medium hover:border-black cursor-pointer">
+                  UK 11
+                </div>
+                <div className="border rounded-md text-center py-3 font-medium hover:border-black cursor-pointer">
+                  UK 12
+                </div>
+                <div className="border rounded-md text-center py-3 font-medium cursor-not-allowed bg-black/[0.1] opacity-50">
+                  UK 13
+                </div>
+                <div className="border rounded-md text-center py-3 font-medium cursor-not-allowed bg-black/[0.1] opacity-50">
+                  UK 14
+                </div>
+              </div>
+              {/* size end */}
+            </div>
+            {/* product price range end */}
           </div>
           {/* right column end */}
         </div>
