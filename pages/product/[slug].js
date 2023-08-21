@@ -75,8 +75,22 @@ const productDetails = () => {
                 </div>
               </div>
               {/* size end */}
+
+              {/* show error start */}
+
+              <div className="text-red-600 mt-1">
+                Size selection is required
+              </div>
+              {/* show error end */}
             </div>
             {/* product price range end */}
+
+            {/* cart button start */}
+
+            <button className="w-full py-4 rounded-full bg-black text-white text-lg font-medium transition-transform active:scale-95 mb-3 hover:opacity-75">
+              Add to Cart
+            </button>
+            {/* cart button end */}
           </div>
           {/* right column end */}
         </div>
