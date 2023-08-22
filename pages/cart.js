@@ -1,3 +1,4 @@
+import Cartitem from "@/components/Cartitem";
 import Wrapper from "@/components/Wrapper";
 import React from "react";
 
@@ -20,7 +21,22 @@ const Cart = () => {
         <div className="flex flex-col lg:flex-row gap-12 py-10">
           {/* cart items start */}
 
+          <div className="flex-[2]">
+            <div className="text-lg font-bold">Cart Items</div>
+            <Cartitem />
+            <Cartitem />
+            <Cartitem />
+          </div>
+
           {/* cart items end */}
+
+          {/* summary start  */}
+
+          <div className="flex-[1]">
+            <div className="text-lg font-bold">Summary</div>
+          </div>
+
+          {/* summary end  */}
         </div>
         {/* cart content end */}
       </Wrapper>
