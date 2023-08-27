@@ -1,9 +1,9 @@
 import Link from "next/link";
 import React from "react";
 
-const ProductCard = () => {
+const ProductCard = ({ data: { attributes: p, id } }) => {
   return (
-    <Link href={"/product/1"}>
+    <Link href={`/products/${p.slug}`}>
       <div className="transform overflow-hidden bg-white duration-200 hover:scale-105 cursor-pointer">
         <img src="/product-1.webp" alt="Product Image" className="w-full" />
         <div className="p-4 text-black/[0.9]">
