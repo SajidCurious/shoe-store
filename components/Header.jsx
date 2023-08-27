@@ -7,6 +7,7 @@ import { IoMdHeartEmpty } from "react-icons/io";
 import { BsCart } from "react-icons/bs";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { VscChromeClose } from "react-icons/vsc";
+import { fetchDataFromApi } from "@/utils/api";
 
 const Header = () => {
   const [mobileMenu, setMobileMenu] = useState(false);
@@ -35,6 +36,14 @@ const Header = () => {
     };
   }, [lastScrollY]);
 
+  useEffect(() => {
+    fetchCategories();
+  }, []);
+
+  const fetchCategories = async () => {
+    const { data } = await fetchDataFromApi("/api/categories?populate=*");
+    setCategories(data);
+  };
   return (
     <header
       className={`w-full h-[50px] md:h-[80px] bg-white flex items-center justify-between z-20 sticky top-0 transition-transform duration-300 ${show}`}
@@ -43,12 +52,17 @@ const Header = () => {
         <Link href="/">
           <p className="font-bold text-xl">SHOOZIE</p>
         </Link>
-        <Menu showCatMenu={showCatMenu} setShowCatMenu={setShowCatMenu} />
+        <Menu
+          showCatMenu={showCatMenu}
+          setShowCatMenu={setShowCatMenu}
+          categories={categories}
+        />
         {mobileMenu && (
           <Mobilemenu
             showCatMenu={showCatMenu}
             setShowCatMenu={setShowCatMenu}
             setMobileMenu={setMobileMenu}
+            categories={categories}
           />
         )}
 
