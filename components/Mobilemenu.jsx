@@ -45,8 +45,8 @@ const Mobilemenu = ({ showCatMenu, setShowCatMenu, setMobileMenu }) => {
                         >
                           <li className="py-4 px-8 border-t flex justify-between">
                             {submenu.name}
+                            <span className="opacity-50 text-sm">78</span>
                           </li>
-                          <span className="opacity-50 text-sm">78</span>
                         </Link>
                       );
                     })}
