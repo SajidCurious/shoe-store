@@ -4,15 +4,15 @@ import Wrapper from "@/components/Wrapper";
 import { fetchDataFromApi } from "@/utils/api";
 import { useEffect, useState } from "react";
 
-export default function Home() {
-  const [data, setData] = useState(null);
-  const fetchProducts = async () => {
-    const { data } = await fetchDataFromApi("/api/products");
-    setData(data);
-  };
-  useEffect(() => {
-    fetchProducts();
-  }, []);
+export default function Home({ products }) {
+  // const [data, setData] = useState(null);
+  // const fetchProducts = async () => {
+  //   const { data } = await fetchDataFromApi("/api/products");
+  //   setData(data);
+  // };
+  // useEffect(() => {
+  //   fetchProducts();
+  // }, []);
 
   return (
     <>
@@ -44,4 +44,12 @@ export default function Home() {
       </main>
     </>
   );
+}
+
+export async function getStaticProps() {
+  const products = await fetchDataFromApi("/api/products");
+
+  return {
+    props: { products },
+  };
 }
