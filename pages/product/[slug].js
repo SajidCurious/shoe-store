@@ -1,17 +1,19 @@
 import ProductDetailsCarousel from "@/components/ProductDetailsCarousel";
 import RelatedProducts from "@/components/RelatedProducts";
 import Wrapper from "@/components/Wrapper";
+import { fetchDataFromApi } from "@/utils/api";
 import React from "react";
 import { IoMdHeartEmpty } from "react-icons/io";
 
-const productDetails = () => {
+const productDetails = ({ product, products }) => {
+  const p = product?.data?.[0]?.attributes;
   return (
     <div className="w-full md:py-20">
       <Wrapper>
         <div className="flex flex-col lg:flex-row md:px-10 gap-[50px] lg:gap-[100px]">
           {/* left column start */}
           <div className="w-full md:w-auto flex-[1.5] max-w-[500px] lg:max-w-full mx-auto lg:mx-0">
-            <ProductDetailsCarousel />
+            <ProductDetailsCarousel images={p.image.data} />
           </div>
 
           {/* left column end */}
@@ -146,10 +148,10 @@ const productDetails = () => {
 export default productDetails;
 
 export async function getStaticPaths() {
-  const category = await fetchDataFromApi("/api/categories?populate=*");
-  const paths = category?.data?.map((c) => ({
+  const products = await fetchDataFromApi("/api/products?populate=*");
+  const paths = products?.data?.map((p) => ({
     params: {
-      slug: c.attributes.slug,
+      slug: p.attributes.slug,
     },
   }));
 
@@ -161,18 +163,17 @@ export async function getStaticPaths() {
 
 // `getStaticPaths` requires using `getStaticProps`
 export async function getStaticProps({ params: { slug } }) {
-  const category = await fetchDataFromApi(
-    `/api/categories?filters[slug][$eq]=${slug}`
+  const product = await fetchDataFromApi(
+    `/api/products?populate=*&filters[slug][$eq]=${slug}`
   );
   const products = await fetchDataFromApi(
-    `/api/products?populate=*&[filters][categories][slug][$eq]=${slug}&pagination[page]=1&pagination[pageSize]=${maxResult}`
+    `/api/products?populate=*&[filters][slug][$ne]=${slug}`
   );
 
   return {
     props: {
-      category,
+      product,
       products,
-      slug,
     },
   };
 }
