@@ -3,6 +3,7 @@ import React from "react";
 import ProductCard from "@/components/ProductCard";
 import { fetchDataFromApi } from "@/utils/api";
 
+const maxResult = 3;
 const category = ({ category, products, slug }) => {
   return (
     <div>
@@ -50,7 +51,7 @@ export const getStaticProps = async ({ params: { slug } }) => {
     `/api/categories?filters[slug][$eq]=${slug}`
   );
   const products = await fetchDataFromApi(
-    `/api/products?populate=*&[filters][categories][slug][$eq]=${slug}`
+    `/api/products?populate=*&[filters][categories][slug][$eq]=${slug}&pagination[page]=1&pagination[pageSize]=3`
   );
 
   return {
