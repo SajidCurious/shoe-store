@@ -1,6 +1,7 @@
 import Wrapper from "@/components/Wrapper";
 import React from "react";
 import ProductCard from "@/components/ProductCard";
+import { fetchDataFromApi } from "@/utils/api";
 
 const category = () => {
   return (
@@ -27,20 +28,22 @@ const category = () => {
 export default category;
 
 export const getStaticPaths = async () => {
+  const category = await fetchDataFromApi("/api/categories?populate=*");
+
+  const paths = category.data.map((c) => ({
+    params: {
+      slug: c.attributes.slug,
+    },
+  }));
+
   return {
-    paths: [
-      {
-        params: {
-          name: "next.js",
-        },
-      }, // See the "paths" section below
-    ],
-    fallback: true, // false or "blocking"
+    paths,
+    fallback: false,
   };
 };
 
-export const getStaticProps = async () => {
-  const res = await fetch("https://api.github.com/repos/vercel/next.js");
-  const repo = await res.json();
-  return { props: { repo } };
-};
+// export const getStaticProps = async () => {
+//   const res = await fetch("https://api.github.com/repos/vercel/next.js");
+//   const repo = await res.json();
+//   return { props: { repo } };
+// };
