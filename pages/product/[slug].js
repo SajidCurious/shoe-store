@@ -2,12 +2,15 @@ import ProductDetailsCarousel from "@/components/ProductDetailsCarousel";
 import RelatedProducts from "@/components/RelatedProducts";
 import Wrapper from "@/components/Wrapper";
 import { fetchDataFromApi } from "@/utils/api";
-import React from "react";
+import React, { useState } from "react";
 import { IoMdHeartEmpty } from "react-icons/io";
 import { getDiscountedPricePercentage } from "@/utils/helper";
 
 const productDetails = ({ product, products }) => {
+  const [selectedSize, setSelectedSize] = useState();
+  const [showError, setShowError] = useState(false);
   const p = product?.data?.[0]?.attributes;
+
   return (
     <div className="w-full md:py-20">
       <Wrapper>
@@ -70,7 +73,7 @@ const productDetails = ({ product, products }) => {
 
               {/* size start */}
 
-              <div className="grid grid-cols-3 gap-2">
+              <div id="sizesGrid" className="grid grid-cols-3 gap-2">
                 {p.size.data.map((item, i) => (
                   <div
                     key={i}
@@ -78,47 +81,26 @@ const productDetails = ({ product, products }) => {
                       item.enabled
                         ? "hover:border-black cursor-pointer"
                         : "cursor-not-allowed bg-black/[0.1] opacity-50"
-                    }`}
+                    } ${selectedSize === item.size ? "border-black" : ""}`}
+                    onClick={() => {
+                      setSelectedSize(item.size);
+                      setShowError(false);
+                    }}
                   >
-                    UK 14
+                    {item.size}
                   </div>
                 ))}
-                {/* <div className="border rounded-md text-center py-3 font-medium hover:border-black cursor-pointer">
-                  UK 6
-                </div>
-                <div className="border rounded-md text-center py-3 font-medium hover:border-black cursor-pointer">
-                  UK 7
-                </div>
-                <div className="border rounded-md text-center py-3 font-medium hover:border-black cursor-pointer">
-                  UK 8
-                </div>
-                <div className="border rounded-md text-center py-3 font-medium hover:border-black cursor-pointer">
-                  UK 9
-                </div>
-                <div className="border rounded-md text-center py-3 font-medium hover:border-black cursor-pointer">
-                  UK 10
-                </div>
-                <div className="border rounded-md text-center py-3 font-medium hover:border-black cursor-pointer">
-                  UK 11
-                </div>
-                <div className="border rounded-md text-center py-3 font-medium hover:border-black cursor-pointer">
-                  UK 12
-                </div>
-                <div className="border rounded-md text-center py-3 font-medium cursor-not-allowed bg-black/[0.1] opacity-50">
-                  UK 13
-                </div>
-                <div className="border rounded-md text-center py-3 font-medium cursor-not-allowed bg-black/[0.1] opacity-50">
-                  UK 14
-                </div> */}
               </div>
 
               {/* size end */}
 
               {/* show error start */}
 
-              <div className="text-red-600 mt-1">
-                Size selection is required
-              </div>
+              {showError && (
+                <div className="text-red-600 mt-1">
+                  Size selection is required
+                </div>
+              )}
 
               {/* show error end */}
             </div>
@@ -127,7 +109,17 @@ const productDetails = ({ product, products }) => {
 
             {/* cart button start */}
 
-            <button className="w-full py-4 rounded-full bg-black text-white text-lg font-medium transition-transform active:scale-95 mb-3 hover:opacity-75">
+            <button
+              className="w-full py-4 rounded-full bg-black text-white text-lg font-medium transition-transform active:scale-95 mb-3 hover:opacity-75"
+              onClick={() => {
+                if (!selectedSize) {
+                  setShowError(true);
+                  document
+                    .getElementById("sizesGrid")
+                    .scrollIntoView({ block: "center", behavior: "smooth" });
+                }
+              }}
+            >
               Add to Cart
             </button>
 
