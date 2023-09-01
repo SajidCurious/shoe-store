@@ -71,7 +71,19 @@ const productDetails = ({ product, products }) => {
               {/* size start */}
 
               <div className="grid grid-cols-3 gap-2">
-                <div className="border rounded-md text-center py-3 font-medium hover:border-black cursor-pointer">
+                {p.size.data.map((item, i) => (
+                  <div
+                    key={i}
+                    className={`border rounded-md text-center py-3 font-medium ${
+                      item.enabled
+                        ? "hover:border-black cursor-pointer"
+                        : "cursor-not-allowed bg-black/[0.1] opacity-50"
+                    }`}
+                  >
+                    UK 14
+                  </div>
+                ))}
+                {/* <div className="border rounded-md text-center py-3 font-medium hover:border-black cursor-pointer">
                   UK 6
                 </div>
                 <div className="border rounded-md text-center py-3 font-medium hover:border-black cursor-pointer">
@@ -97,7 +109,7 @@ const productDetails = ({ product, products }) => {
                 </div>
                 <div className="border rounded-md text-center py-3 font-medium cursor-not-allowed bg-black/[0.1] opacity-50">
                   UK 14
-                </div>
+                </div> */}
               </div>
 
               {/* size end */}
