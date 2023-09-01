@@ -4,6 +4,7 @@ import Wrapper from "@/components/Wrapper";
 import { fetchDataFromApi } from "@/utils/api";
 import React from "react";
 import { IoMdHeartEmpty } from "react-icons/io";
+import { getDiscountedPricePercentage } from "@/utils/helper";
 
 const productDetails = ({ product, products }) => {
   const p = product?.data?.[0]?.attributes;
@@ -22,25 +23,38 @@ const productDetails = ({ product, products }) => {
 
           <div className="flex-[1] py-3">
             {/* product title */}
-            <div className="text-[34px] font-semibold mb-2">
-              Jordand Retro 6 G
+            <div className="text-[34px] font-semibold mb-2 leading-tight">
+              {p.name}
             </div>
 
             {/* product subtitle */}
 
-            <div className="text-lg font-semibold mb-5">
-              Men&apos;s Golf Shoes
-            </div>
+            <div className="text-lg font-semibold mb-5">{p.subtitle}</div>
 
             {/* product price */}
 
-            <div className="text-lg font-semibold">MRP : ₹ 19,695.00</div>
+            <div className="flex items-center">
+              <p className="mr-2 text-lg font-semibold">
+                MRP : &#8377;{p.price}
+              </p>
+              {p.original_price && (
+                <>
+                  <p className="text-base  font-medium line-through">
+                    &#8377;{p.original_price}
+                  </p>
+                  <p className="ml-auto text-base font-medium text-green-500">
+                    {getDiscountedPricePercentage(p.original_price, p.price)}%
+                    off
+                  </p>
+                </>
+              )}
+            </div>
             <div className="text-md font-medium text-black/[0.5]">
               incl. of taxes
             </div>
             <div className="text-md font-medium text-black/[0.5] mb-20">{`(Also include all applicable duties)`}</div>
 
-            {/* product price range start */}
+            {/* product size range start */}
 
             <div className="mb-10">
               {/* heding start */}
