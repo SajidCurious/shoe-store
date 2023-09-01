@@ -16,7 +16,7 @@ const ProductDetailsCarousel = ({ images }) => {
           <img
             key={img.id}
             src={img.attributes.url}
-            alt="img.attributes.name"
+            alt={img.attributes.name}
           />
         ))}
         {/* <img src="/p1.png" />
