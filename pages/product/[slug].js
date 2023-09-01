@@ -143,7 +143,7 @@ const productDetails = ({ product, products }) => {
           </div>
           {/* right column end */}
         </div>
-        {/* <RelatedProducts /> */}
+        <RelatedProducts products={products} />
       </Wrapper>
     </div>
   );
