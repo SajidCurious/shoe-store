@@ -1,13 +1,20 @@
+import Image from "next/image";
 import React from "react";
 import { RiDeleteBin6Line } from "react-icons/ri";
 
-const Cartitem = () => {
+const Cartitem = ({ data }) => {
+  const p = data.attributes;
   return (
     <div className="flex py-5 gap-3 md:gap-5 border-b">
       {/* image start  */}
 
       <div className="shrink-0 aspect-square w-[50px] md:w-[120px]">
-        <img src="product-1.webp" alt="cart image" />
+        <Image
+          width={120}
+          height={120}
+          src={p.thumbnail.data.attributes.url}
+          alt={p.name}
+        />
       </div>
       {/* image end */}
 
@@ -16,26 +23,26 @@ const Cartitem = () => {
           {/* product title  */}
 
           <div className="text-lg md:text-2xl font-semibold text-black/[0.8]">
-            Jordan Retro 6 G
+            {p.name}
           </div>
 
           {/* product subtitle  */}
 
           <div className="text-sm md:text-md font-medium text-black/[0.5] block md:hidden">
-            Men&apos;s Golf Shoes
+            {p.subtitle}
           </div>
 
           {/* product price  */}
 
           <div className="text-sm md:text-md font-bold text-black/[0.5] mt-2">
-            MRP : ₹ 19,695.00
+            MRP : &#8377;{p.price}
           </div>
         </div>
 
         {/* product subtitle  */}
 
         <div className="text-md font-medium text-black/[0.5] hidden md:block">
-          Men&apos;s Golf Shoes
+          {p.subtitle}
         </div>
 
         <div className="flex items-center justify-between mt-4">
