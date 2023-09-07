@@ -67,17 +67,13 @@ const Cartitem = ({ data }) => {
             <div className="flex items-center gap-1">
               <div className="font-semibold">Quantity:</div>
               <select className="hover:text-black">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-                <option value="11">11</option>
+                {Array.from({ length: 10 }, (_, i) => i + 1).map((q, i) => {
+                  return (
+                    <option key={i} value={q} selected={data.quantity === q}>
+                      {q}
+                    </option>
+                  );
+                })}
               </select>
             </div>
           </div>
