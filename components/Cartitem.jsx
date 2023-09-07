@@ -50,17 +50,18 @@ const Cartitem = ({ data }) => {
             <div className="flex items-center gap-1">
               <div className="font-semibold">Size:</div>
               <select className="hover:text-black">
-                <option value="1">6</option>
-                <option value="2">6</option>
-                <option value="3">6</option>
-                <option value="4">6</option>
-                <option value="5">6</option>
-                <option value="6">6</option>
-                <option value="7">6</option>
-                <option value="8">6</option>
-                <option value="9">6</option>
-                <option value="10">6</option>
-                <option value="11">6</option>
+                {p.size.data.map((item, i) => {
+                  return (
+                    <option
+                      key={i}
+                      value={item.size}
+                      disabled={!item.enabled ? true : false}
+                      selected={data.selectedSize === item.size}
+                    >
+                      {item.size}
+                    </option>
+                  );
+                })}
               </select>
             </div>
             <div className="flex items-center gap-1">
