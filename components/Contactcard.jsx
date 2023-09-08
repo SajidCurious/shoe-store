@@ -52,9 +52,6 @@ const Contactcard = () => {
                 type="text"
                 id="username"
                 name="username"
-                value={user.username}
-                onChange={handleChange}
-                autoComplete="off"
                 required
                 className="w-full bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
               />
@@ -70,9 +67,6 @@ const Contactcard = () => {
                 type="email"
                 id="email"
                 name="email"
-                value={user.email}
-                onChange={handleChange}
-                autoComplete="off"
                 required
                 className="w-full bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
               />
@@ -87,9 +81,6 @@ const Contactcard = () => {
               <textarea
                 id="message"
                 name="message"
-                value={user.message}
-                onChange={handleChange}
-                autoComplete="off"
                 required
                 className="w-full bg-white rounded border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
               ></textarea>
